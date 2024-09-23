@@ -8,10 +8,9 @@ class BinaryQuizApp:
         self.root = root
         self.root.title("Binary Operations Quiz")
 
-        # Set window size and center it
-        self.root.geometry("800x600")
-        self.center_window()
-
+        # Set the window to fullscreen
+        self.root.attributes('-fullscreen', True)
+        
         self.win_count = 0
         self.lose_count = 0
         self.total_time = 0
@@ -19,15 +18,6 @@ class BinaryQuizApp:
         # Create GUI components
         self.create_widgets()
         self.new_question()
-
-    def center_window(self):
-        width = 800
-        height = 600
-        screen_width = self.root.winfo_screenwidth()
-        screen_height = self.root.winfo_screenheight()
-        x = (screen_width - width) // 2
-        y = (screen_height - height) // 2
-        self.root.geometry(f"{width}x{height}+{x}+{y}")
 
     def create_widgets(self):
         self.root.grid_rowconfigure(0, weight=1)
@@ -39,27 +29,27 @@ class BinaryQuizApp:
         self.root.grid_columnconfigure(0, weight=1)
         self.root.grid_columnconfigure(1, weight=1)
 
-        self.label_binary0 = tk.Label(self.root, font=('Helvetica', 36), anchor='center')
+        self.label_binary0 = tk.Label(self.root, font=('Helvetica', 48), anchor='center')
         self.label_binary0.grid(row=0, column=0, columnspan=2, pady=20)
 
-        self.label_binary1 = tk.Label(self.root, font=('Helvetica', 36), anchor='center')
+        self.label_binary1 = tk.Label(self.root, font=('Helvetica', 48), anchor='center')
         self.label_binary1.grid(row=1, column=0, columnspan=2, pady=20)
 
-        self.label_operation = tk.Label(self.root, font=('Helvetica', 36), anchor='center')
+        self.label_operation = tk.Label(self.root, font=('Helvetica', 48), anchor='center')
         self.label_operation.grid(row=2, column=0, columnspan=2, pady=20)
 
-        self.label_time = tk.Label(self.root, font=('Helvetica', 24), anchor='center', text="Time: 0.000")
+        self.label_time = tk.Label(self.root, font=('Helvetica', 36), anchor='center', text="Time: 0.000")
         self.label_time.grid(row=3, column=0, columnspan=2, pady=20)
 
-        self.entry_hex = tk.Entry(self.root, font=('Helvetica', 36), justify='center')
+        self.entry_hex = tk.Entry(self.root, font=('Helvetica', 48), justify='center')
         self.entry_hex.grid(row=4, column=0, columnspan=2, pady=20)
 
         self.entry_hex.bind("<Return>", self.on_submit)
 
-        self.submit_button = tk.Button(self.root, text="Submit", font=('Helvetica', 24), command=self.check_answer)
+        self.submit_button = tk.Button(self.root, text="Submit", font=('Helvetica', 36), command=self.check_answer)
         self.submit_button.grid(row=5, column=0, columnspan=2, pady=20)
 
-        self.stats_label = tk.Label(self.root, font=('Helvetica', 20), anchor='center')
+        self.stats_label = tk.Label(self.root, font=('Helvetica', 30), anchor='center')
         self.stats_label.grid(row=6, column=0, columnspan=2, pady=20)
 
     def generate_random_binary(self):
